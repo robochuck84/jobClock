@@ -30,7 +30,7 @@
 	</ul>
       </div>
     </div>
-
+    
     <div class="row" ng-controller="TimerPanelController as timerPanelCtrl">
       <div class="col-lg-8">
         <div ng-repeat="timerPanel in timers"
@@ -45,7 +45,7 @@
 	      <div class="col-lg-3">Start: {{timerPanel.start}}</div>
 	      <div class="col-lg-3">End: {{timerPanel.end}}</div>
 	      <div ng-show="timerPanel.isRunning" class="col-lg-6 text-right" style="font-size:16pt">
-		<timer autostart="true" interval="1000">{{hours}}:{{minutes}}:{{seconds}}</timer>
+		<timer interval="1000">{{hhours}}:{{mminutes}}:{{sseconds}}</timer>
 	      </div>
 	    </div>
 	  </div>
@@ -59,7 +59,7 @@
   <script src="../bower_components/angular/angular.js"></script>
   <script src="../bower_components/angular-route/angular-route.js"></script>
   <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  <script src="../node_modules/underscore/underscore.js"></script>
+  <script src="../bower_components/underscore/underscore.js"></script>
   <script src="../bower_components/angular-timer/dist/angular-timer.js"></script>
   <script src="../bower_components/jquery/dist/jquery.js"></script>
   <script src="js/app.js"></script>
