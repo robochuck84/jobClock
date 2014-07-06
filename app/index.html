@@ -45,12 +45,20 @@
 	      <div class="col-lg-3">Start: {{timerPanel.start}}</div>
 	      <div class="col-lg-3">End: {{timerPanel.end}}</div>
 	      <div ng-show="timerPanel.isRunning" class="col-lg-6 text-right" style="font-size:16pt">
-		<timer interval="1000">{{hhours}}:{{mminutes}}:{{sseconds}}</timer>
+		<timer interval="1000" start-time="timerPanel.time" autostart="timer.isRunning">{{hhours}}:{{mminutes}}:{{sseconds}}</timer>
 	      </div>
+              Current time {{timerPanel.time}}
 	    </div>
 	  </div>
 	</div>
       </div> <!-- end col -->
+      <div class="col-lg-4">
+        <label>Create new timer</label>
+        <div class="form-group">
+          <input type="text" class="form-control" ng-model="created_timer_name"/>
+        </div>
+        <button class="btn btn-default" ng-click="createTimer()">Create</button>
+      </div>
     </div> <!-- end row -->
 
   <!-- In production use:

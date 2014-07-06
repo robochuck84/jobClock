@@ -10,7 +10,8 @@ angular.module('jobClock.controllers', []).
                 start: "12:00pm",
                 end: "",
                 isRunning: true,
-                group: 1
+                group: 1,
+                time: 0
             },
             {
                 id: 2,
@@ -19,6 +20,7 @@ angular.module('jobClock.controllers', []).
                 end: "",
                 isRunning: false,
                 group: 2,
+                time: 0
             },
             {
                 id: 3,
@@ -26,9 +28,14 @@ angular.module('jobClock.controllers', []).
                 start: "12:00pm",
                 end: "",
                 isRunning: false,
-                group: 3
+                group: 3,
+                time: 0
             }
         ];
+        $scope.current_timer = $scope.timers[0];
+        $scope.id = 4;
+        $scope.created_timer_name;
+        
         $scope.timerClicked = function(id) {
             _($scope.timers).each(function(element, index, list) {
                 if (element.id === id) {
@@ -36,8 +43,29 @@ angular.module('jobClock.controllers', []).
                 } else {
                     element.isRunning = false;
                 }
+                $scope.current_timer = element;
+                
             });
         };
+        
+        $scope.createTimer = function() {
+            $scope.timers.push(
+                {
+                    id: $scope.id,
+                    title: $scope.created_timer_name,
+                    start: "12:00pm",
+                    end: "",
+                    isRunning: false,
+                    group: 1,
+                    time: 0
+                }
+            );
+            $scope.id += 1;
+        };
+
+        $scope.$on('timer-tick', function(event, args) {
+            $scope.current_timer.time += 1000;
+        });
     });
 
 
